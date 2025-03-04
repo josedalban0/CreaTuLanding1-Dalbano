@@ -17,17 +17,19 @@ const ItemListContainer = () => {
     new Promise((resolve) => {
       setTimeout(() => {
         if (categoriaId) {
-          resolve(productos.filter(prod => prod.categoria === categoriaId));
+          resolve(productos.filter((prod) => prod.categoria === categoriaId));
         } else {
           resolve(productos);
         }
       }, 1000);
-    }).then(data => setItems(data));
+    }).then((data) => setItems(data));
   }, [categoriaId]);
 
   return (
     <div className="container mt-4">
-      <h2>{categoriaId ? `Categoría: ${categoriaId}` : "Todos los productos"}</h2>
+      <h2>
+        {categoriaId ? `Categoría: ${categoriaId}` : "Todos los productos"}
+      </h2>
       <ItemList productos={items} />
     </div>
   );
