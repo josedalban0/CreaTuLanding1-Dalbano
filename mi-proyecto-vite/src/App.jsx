@@ -1,27 +1,20 @@
-import "./App.css";
-import "./index.css";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
-import Inicio from "./pages/Inicio";
-import Productos from "./pages/Productos";
-import Contacto from "./pages/Contacto";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
   return (
-    <Router>
+    <div>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/productos" element={<Productos />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route
-          path="/mi-tienda"
-          element={<ItemListContainer mensaje="¡Bienvenido a mi tienda!" />}
-        />
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
+        <Route path="/producto/:id" element={<ItemDetailContainer />} />
+        <Route path="*" element={<h2>Página no encontrada</h2>} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 
